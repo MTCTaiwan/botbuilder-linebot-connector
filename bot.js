@@ -7,7 +7,6 @@ var builder = require("botbuilder");
 // import * as  azure from './lib/AzureBotStorage.js';
 var LineConnector_1 = require("./line/LineConnector");
 var q_list = require("./questions.js");
-// console.log(q_list)
 var server = express();
 server.listen(process.env.port || process.env.PORT || 3980, function () {
     console.log("listening to");
