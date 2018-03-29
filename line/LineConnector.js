@@ -549,7 +549,7 @@ var LineConnector = /** @class */ (function () {
             }
         };
         var getAltText = function (s) {
-            return s.substring(0, 400);
+            return ''.concat(s).substring(0, 400);
         };
         // console.log("event", event)
         switch (event.type) {
