@@ -128,7 +128,6 @@ var LineConnector = /** @class */ (function () {
     };
     LineConnector.prototype.listen = function () {
         var _this = this;
-        console.log("listen");
         var parser = bodyParser.json({
             verify: function (req, res, buf, encoding) {
                 req.rawBody = buf.toString(encoding);
@@ -172,10 +171,7 @@ var LineConnector = /** @class */ (function () {
     };
     LineConnector.prototype.dispatch = function (body, res) {
         var _this = this;
-        console.log("dispatch");
-        var _this = this;
         if (!body || !body.events) {
-            console.log("dispatch return");
             return;
         }
         body.events.forEach(function (event) { return __awaiter(_this, void 0, void 0, function () {
@@ -183,7 +179,7 @@ var LineConnector = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log("event", event);
+                        console.log("[INFO] Receiving event", event);
                         _this.addReplyToken(event.replyToken);
                         m = {
                             timestamp: new Date(parseInt(event.timestamp)).toISOString(),
@@ -349,14 +345,7 @@ var LineConnector = /** @class */ (function () {
         return [message];
     };
     LineConnector.prototype.post = function (path, body) {
-        console.log("post", path, body);
-        // console.log(path, body)
-        // let r;
-        // try {
-        //     r = fetch(this.endpoint + path, { method: 'POST', headers: this.headers, body: JSON.stringify(body) });
-        // } catch (er) {
-        //     console.log("er",er)
-        // }
+        console.log("[INFO] POST", path, body);
         return fetch(this.endpoint + path, { method: 'POST', headers: this.headers, body: JSON.stringify(body) });
     };
     LineConnector.prototype.get = function (path) {
@@ -369,7 +358,7 @@ var LineConnector = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        console.log("reply");
+                        console.log("[INFO] Replying to user");
                         m = LineConnector.createMessages(message);
                         body = {
                             replyToken: replyToken,
