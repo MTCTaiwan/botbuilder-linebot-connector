@@ -154,20 +154,18 @@ var LineConnector = /** @class */ (function () {
     LineConnector.prototype.addReplyToken = function (replyToken) {
         var _this = this;
         _this.replyToken = replyToken;
-        // console.log("addReplyToken1", _this.replyToken, _this.event_cache)
         this.timer = setTimeout(function () {
-            // console.log("addReplyToken2", _this.replyToken)
             if (_this.replyToken && _this.event_cache.length > 0) {
                 var r = (' ' + _this.replyToken).slice(1);
                 _this.replyToken = null;
                 _this.reply(r, _this.event_cache);
             }
             else if (_this.replyToken !== null) {
-                console.log("wait for 2 seconds let will make replyToken no use, clean the replytoken");
+                console.log("[INFO] The replytoken will be expired in 10s.");
             }
             _this.replyToken = null;
             _this.event_cache = [];
-        }, 2000);
+        }, 10000);
     };
     LineConnector.prototype.dispatch = function (body, res) {
         var _this = this;
